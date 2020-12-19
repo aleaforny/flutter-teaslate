@@ -44,3 +44,22 @@ If you try to call a translation that does not have the language, it will return
 // The below code will return the first translation set, so "What is your name?"
 teaslate.translate("whatIsYourName", lang:"hu")
 ```
+
+You can also specify a default language translation when initializing the `TeaSlate` object, so that you're not required to specify the lang parameter when translating:
+
+```
+// Instantiate the TeaSlate object
+  TeaSlate teaslate = TeaSlate(key: "my_api_key", defaultLang: "fr")
+
+  // Connect to TEAslate API (async)
+  teaslate.connect().then((bool connected) {
+    // You should always check if connection was successful
+    if (connected) {
+      // Returns a string "Quel est votre nom ?"
+      teaslate.translate("whatIsYourName")
+
+      // You can also still specify a lang if you want to force translation (it returns "What is your name?"
+      teaslate.translate("whatIsYourName", lang:"en")
+    }
+  });
+```

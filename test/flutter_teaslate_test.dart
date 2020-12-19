@@ -11,27 +11,60 @@ void main() {
     String goodKey = API_KEY;
     String badKey = "wrong";
 
-    TeaSlate teaslate = TeaSlate(key: badKey, debug: true, ignoreCertErrors: true);
-    expect(teaslate.connect().then((bool connected) => expect(connected, false)), completes);
+    TeaSlate teaslate =
+        TeaSlate(key: badKey, debug: true, ignoreCertErrors: true);
+    expect(
+        teaslate.connect().then((bool connected) => expect(connected, false)),
+        completes);
 
-    TeaSlate teaslate_2 = TeaSlate(key: goodKey, debug: true, ignoreCertErrors: true);
-    expect(teaslate_2.connect().then((bool connected) => expect(connected, true)), completes);
+    TeaSlate teaslate_2 =
+        TeaSlate(key: goodKey, debug: true, ignoreCertErrors: true);
+    expect(
+        teaslate_2.connect().then((bool connected) => expect(connected, true)),
+        completes);
   });
 
-  test('can retrieve a translation', () {
+  test('can retrieve a specific translation', () {
     String translation = "whatIsYourName";
 
-    TeaSlate teaslate = TeaSlate(key: API_KEY, debug: true, ignoreCertErrors: true);
+    TeaSlate teaslate =
+        TeaSlate(key: API_KEY, debug: true, ignoreCertErrors: true);
 
-    expect(teaslate.connect().then((bool connected) {
-      if (connected) {
-        expect(teaslate.translate(translation, lang:"en"), "What is your name?");
-        expect(teaslate.translate(translation, lang:"fr"), "Quel est votre nom ?");
-        expect(teaslate.translate(translation, lang:"hu"), "What is your name?", reason: "not found translation returns the first one");
-      } else {
-        fail("wasn't able to connect API");
-      }
-    }), completes);
+    expect(
+        teaslate.connect().then((bool connected) {
+          if (connected) {
+            expect(teaslate.translate(translation, lang: "en"),
+                "What is your name?");
+            expect(teaslate.translate(translation, lang: "fr"),
+                "Quel est votre nom ?");
+            expect(teaslate.translate(translation, lang: "hu"),
+                "What is your name?",
+                reason: "not found translation returns the first one");
+          } else {
+            fail("wasn't able to connect API");
+          }
+        }),
+        completes);
+  });
+
+  test('can retrieve a default translation', () {
+    String translation = "whatIsYourName";
+
+    TeaSlate teaslate = TeaSlate(
+        key: API_KEY, defaultLang: "en", debug: true, ignoreCertErrors: true);
+
+    expect(
+        teaslate.connect().then((bool connected) {
+          if (connected) {
+            expect(teaslate.translate(translation), "What is your name?");
+            expect(teaslate.translate(translation, lang: "fr"),
+                "Quel est votre nom ?",
+                reason: "the translation force did not work");
+          } else {
+            fail("wasn't able to connect API");
+          }
+        }),
+        completes);
   });
 
   print("Ending test units");
