@@ -11,9 +11,9 @@ class TeaSlate {
   static const String apiUrl =
       "https://teaslate.twiiky.fr/api/translations/json";
   final String key;
-  final String defaultLang;
   final bool debug;
   final bool ignoreCertErrors;
+  String defaultLang;
   bool isConnected = false;
   List<dynamic> translations;
 

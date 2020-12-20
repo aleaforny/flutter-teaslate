@@ -1,3 +1,7 @@
+## [0.0.4] - 2020/12/20.
+
+- `defaultLang` can be changed after initialization
+
 ## [0.0.3] - 2020/12/19.
 
 - Added a `defaultLang` parameter to class `TeaSlate`
