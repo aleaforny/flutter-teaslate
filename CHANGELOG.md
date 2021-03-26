@@ -1,3 +1,7 @@
+## [0.0.5] - 2021/03/21.
+
+- Support for Flutter 2.0
+
 ## [0.0.4] - 2020/12/20.
 
 - `defaultLang` can be changed after initialization
