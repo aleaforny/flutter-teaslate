@@ -1,3 +1,7 @@
+## [0.0.6] - 2021/03/21.
+
+- Fixed URI.parse()
+
 ## [0.0.5] - 2021/03/21.
 
 - Support for Flutter 2.0

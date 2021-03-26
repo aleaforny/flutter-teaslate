@@ -40,7 +40,7 @@ class TeaSlate {
       var ioClient = IOClient(client);
 
       final http.Response response = await ioClient
-          .get(apiUrl, headers: headers)
+          .get(Uri.parse(apiUrl), headers: headers)
           .timeout((const Duration(seconds: 10)));
 
       if (debug) {
