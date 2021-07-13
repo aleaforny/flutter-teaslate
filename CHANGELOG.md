@@ -1,3 +1,7 @@
+## [0.0.7] - 2021/07/13.
+
+- Added parameter url to change URL
+
 ## [0.0.6] - 2021/03/21.
 
 - Fixed URI.parse()

@@ -8,8 +8,7 @@ import 'package:http/io_client.dart';
 import 'package:flutter/cupertino.dart';
 
 class TeaSlate {
-  static const String apiUrl =
-      "https://teaslate.twiiky.fr/api/translations/json";
+  final String apiUrl;
   final String key;
   final bool debug;
   final bool ignoreCertErrors;
@@ -19,9 +18,10 @@ class TeaSlate {
 
   TeaSlate(
       {@required this.key,
-      this.defaultLang,
-      this.debug = false,
-      this.ignoreCertErrors = false});
+        this.apiUrl = "https://teaslate.twiiky.fr/api/translations/json",
+        this.defaultLang,
+        this.debug = false,
+        this.ignoreCertErrors = false});
 
   Future<http.Response> _getAllTranslations() async {
     try {
