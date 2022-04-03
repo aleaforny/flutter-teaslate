@@ -1,3 +1,7 @@
+## [0.0.8-nullsafety.0] - 2022/04/03.
+
+- Added sound null safety
+
 ## [0.0.7] - 2021/07/13.
 
 - Added parameter url to change URL

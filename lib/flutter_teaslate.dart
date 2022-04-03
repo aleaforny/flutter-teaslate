@@ -12,15 +12,16 @@ class TeaSlate {
   final String key;
   final bool debug;
   final bool ignoreCertErrors;
-  String defaultLang;
+  String? defaultLang;
   bool isConnected = false;
   List<dynamic> translations;
 
   TeaSlate(
-      {@required this.key,
+      {required this.key,
         this.apiUrl = "https://teaslate.twiiky.fr/api/translations/json",
         this.defaultLang,
         this.debug = false,
+        this.translations = const [],
         this.ignoreCertErrors = false});
 
   Future<http.Response> _getAllTranslations() async {
@@ -88,7 +89,7 @@ class TeaSlate {
     return isConnected;
   }
 
-  String translate(String uid, {String lang}) {
+  String translate(String uid, {String? lang}) {
     if (isConnected) {
       if (lang != null || defaultLang != null) {
         List<dynamic> translationsFound = translations
@@ -98,7 +99,7 @@ class TeaSlate {
           List<dynamic> translationsTexts = translationsFound
               .first['translation_set']
               .where((translation) => doesContain(
-                  translation['lang'], lang == null ? defaultLang : lang))
+                  translation['lang'], lang == null ? defaultLang! : lang))
               .toList();
           if (translationsTexts.length == 1) {
             return translationsTexts.first['default'];
