@@ -1,3 +1,7 @@
+## [0.0.9] - 2023/08/18.
+
+- Upgrade dependencies
+
 ## [0.0.8-nullsafety.0] - 2022/04/03.
 
 - Added sound null safety
